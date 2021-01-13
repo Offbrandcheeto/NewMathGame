@@ -1,0 +1,119 @@
+/* Font Roboto*/
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+/* Reset */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Variables */
+
+:root {
+  --color-1: #333;
+  --color-2: #f4f4f4;
+  --color-3: #fff;
+}
+
+/* Container & Main Styles */
+
+body {
+  line-height: 1.4;
+  background: var(--color-2);
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+  background: var(--color-1);
+  color: var(--color-3);
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin: 0 1rem;
+}
+
+/* Button Classes */
+
+.btn {
+  cursor: pointer;
+  background: var(--color-1);
+  color: var(--color-3);
+  padding: 1rem 1.5rem;
+  margin: 2rem 1.5rem;
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-light {
+  background: var(--color-3);
+  color: var(--color-1);
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+}
+
+.btn:hover {
+  border-radius: 10px;
+}
+
+/* Font Classes */
+
+.lead {
+  font-size: 2rem;
+}
+
+.lead-2 {
+  font-size: 4rem;
+}
+
+/* Input Classes */
+
+input {
+  max-width: 150px;
+  padding: 1rem;
+  border-radius: 10px;
+  outline: 0;
+  color: var(--color-1);
+  border: 3px solid var(--color-1);
+}
+
+input:focus {
+  border: 3px solid var(--color-1);
+}
+
+/* Removes input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

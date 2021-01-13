@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Math Game || Math is Fun!</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <header>
+      <nav>
+        <div class="navbar">
+          <div class="logo">
+            <button class="btn btn-light" id="save-btn">Save</button>
+          </div>
+          <ul>
+            <li id="correct" class="lead"></li>
+            <li id="wrong" class="lead"></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Section -->
+
+    <section>
+      <div class="container">
+        <form autocomplete="off">
+          <label for="answer" id="question" class="lead-2"></label>
+          <input
+            type="number"
+            onfocus="updateOnHover()"
+            class="lead-2"
+            id="answer"
+          />
+        </form>
+        <button id="main-btn" class="btn lead">Check Answer</button>
+      </div>
+    </section>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
