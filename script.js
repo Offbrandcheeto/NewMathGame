@@ -95,12 +95,12 @@ function mulLvlOne() {
 
 function mulLvlTwo() {
   symbol = "x";
-  return getRandomInt(2, 11);
+  return getRandomInt(4, 11);
 }
 
 function mulLvlThree() {
   symbol = "x";
-  return getRandomInt(5, 15);
+  return getRandomInt(6, 15);
 }
 
 // Check Answer Function
@@ -184,6 +184,15 @@ function updateOnHover() {
 document.addEventListener("keypress", function (event) {
   if (event.keyCode === 32) {
     clearGame();
+  }
+});
+
+// Check Answer Event Listener
+
+document.addEventListener("keypress", function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    checkAnswer();
   }
 });
 
