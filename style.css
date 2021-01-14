@@ -112,13 +112,6 @@ input {
   border: 3px solid var(--color-1);
 }
 
-input::placeholder {
-  position: relative;
-  bottom: 10px;
-  text-align: center;
-  font-size: 1.25rem;
-}
-
 /* Removes input arrows */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
