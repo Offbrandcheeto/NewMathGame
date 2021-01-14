@@ -114,7 +114,7 @@ function checkAnswer() {
       answerEl.style.border = "3px solid #19de7b";
     } else {
       wrong++;
-      answerEl.style.border = "3px solid #ff6666";
+      answerEl.style.border = "3px solid #ff1646";
     }
     answerEl.value = "";
     score = correct - wrong;
@@ -197,6 +197,8 @@ function clearGame() {
   correct = 0;
   score = 0;
   symbol = "+";
+  answerEl.style.border = "3px solid #333";
+  answerEl.value = "";
   localStorage.clear();
   problem();
 }

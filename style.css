@@ -68,10 +68,11 @@ section {
   color: var(--color-3);
   padding: 1rem 1.5rem;
   margin: 2rem 1.5rem;
-  border-radius: 5px;
+  border-radius: 30px;
+  letter-spacing: 1px;
   border: 0;
   outline: 0;
-  transition: all 0.3s ease;
+  transition: opacity 0.4s ease-out;
 }
 
 .btn-light {
@@ -79,14 +80,18 @@ section {
   color: var(--color-1);
   margin: 0;
   padding: 0.75rem 1rem;
-  font-size: 1.5rem;
-}
-
-.btn:hover {
   border-radius: 10px;
 }
 
+.btn:hover {
+  opacity: 0.9;
+}
+
 /* Font Classes */
+
+.lead-small {
+  font-size: 1.5rem;
+}
 
 .lead {
   font-size: 2rem;
@@ -104,10 +109,6 @@ input {
   border-radius: 10px;
   outline: 0;
   color: var(--color-1);
-  border: 3px solid var(--color-1);
-}
-
-input:focus {
   border: 3px solid var(--color-1);
 }
 
