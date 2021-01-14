@@ -115,6 +115,7 @@ function checkAnswer() {
     } else {
       wrong++;
       answerEl.style.border = "3px solid #ff1646";
+      answerEl.placeholder = `${number1} ${symbol} ${number2} = ${answer}`;
     }
     answerEl.value = "";
     score = correct - wrong;
@@ -145,6 +146,10 @@ function problem() {
 // Event Listeners
 
 mainBtn.addEventListener("click", checkAnswer);
+
+answerEl.addEventListener("click", function () {
+  answerEl.placeholder = "";
+});
 
 saveBtn.addEventListener("click", function () {
   const savedScore = localStorage.setItem("score", `${score}`);
@@ -186,6 +191,7 @@ document.addEventListener("keypress", function (event) {
 document.addEventListener("keypress", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
+    answerEl.placeholder = "";
     checkAnswer();
   }
 });
@@ -199,6 +205,7 @@ function clearGame() {
   symbol = "+";
   answerEl.style.border = "3px solid #333";
   answerEl.value = "";
+  answerEl.placeholder = "";
   localStorage.clear();
   problem();
 }
