@@ -173,12 +173,6 @@ const updateGame = setInterval(() => {
   correctEl.textContent = `✔️ ${correct}`;
 }, 10);
 
-// Input Border Function
-
-function updateOnHover() {
-  answerEl.style.border = "3px solid #333";
-}
-
 // Clear Local Storage Event Listener
 
 document.addEventListener("keypress", function (event) {
