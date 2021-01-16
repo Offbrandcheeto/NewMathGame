@@ -1,7 +1,6 @@
 'use strict';
 
 // Const Variables
-
 const mainBtn = document.getElementById('main-btn');
 const questionEl = document.getElementById('question');
 const answerEl = document.getElementById('answer');
@@ -11,7 +10,6 @@ const saveBtn = document.getElementById('save-btn');
 const incorrectDisplay = document.getElementById('incorrect-display');
 
 // Let Variables
-
 let answer, number1, number2, score;
 let wrong = 0;
 let correct = 0;
@@ -19,12 +17,10 @@ let symbol = '+';
 let autoSave = 'off';
 
 // Init Functions
-
 populateUI();
 problem();
 
 // Decide Function
-
 function decide() {
   if (score >= 10 && score < 20) {
     return addLvlTwo();
@@ -55,7 +51,6 @@ function getRandomInt(min, max) {
 }
 
 // Level Functions Adding
-
 function addLvlOne() {
   symbol = '+';
   return getRandomInt(0, 10);
@@ -72,7 +67,6 @@ function addLvlThree() {
 }
 
 // Level Functions Subtraction
-
 function subLvlOne() {
   symbol = '-';
   return getRandomInt(0, 10);
@@ -89,7 +83,6 @@ function subLvlThree() {
 }
 
 // Level Functions Multiplication
-
 function mulLvlOne() {
   symbol = 'x';
   return getRandomInt(0, 7);
@@ -106,7 +99,6 @@ function mulLvlThree() {
 }
 
 // Check Answer Function
-
 function checkAnswer() {
   incorrectDisplay.classList.add('hidden');
   let numberValue = answerEl.value;
@@ -128,7 +120,6 @@ function checkAnswer() {
 }
 
 // New Problem Function
-
 function problem() {
   number1 = decide();
   number2 = decide();
@@ -148,7 +139,6 @@ function problem() {
 }
 
 // Event Listeners
-
 mainBtn.addEventListener('click', checkAnswer);
 
 saveBtn.addEventListener('click', function (event) {
@@ -156,7 +146,6 @@ saveBtn.addEventListener('click', function (event) {
 });
 
 // Save Function
-
 function save() {
   const savedScore = localStorage.setItem('score', `${score}`);
   const savedCorrect = localStorage.setItem('correct', `${correct}`);
@@ -164,7 +153,6 @@ function save() {
 }
 
 // Local Storage Function
-
 function populateUI() {
   if (localStorage.getItem('score')) {
     score = localStorage.getItem('score');
@@ -178,7 +166,6 @@ function populateUI() {
 }
 
 // Update Game Variable
-
 const updateGame = setInterval(() => {
   wrongEl.textContent = `❌ ${wrong}`;
   correctEl.textContent = `✔️ ${correct}`;
@@ -191,7 +178,6 @@ const updateGame = setInterval(() => {
 }, 10);
 
 // Clear Local Storage Event Listener
-
 document.addEventListener('keypress', function (event) {
   if (event.code === 'Space') {
     clearGame();
@@ -199,7 +185,6 @@ document.addEventListener('keypress', function (event) {
 });
 
 // Check Answer Event Listener
-
 document.addEventListener('keypress', function (event) {
   if (event.code === 'Enter') {
     event.preventDefault();
@@ -208,7 +193,6 @@ document.addEventListener('keypress', function (event) {
 });
 
 // Clear Game Function
-
 function clearGame() {
   wrong = 0;
   correct = 0;
