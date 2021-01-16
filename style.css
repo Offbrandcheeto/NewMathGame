@@ -1,9 +1,7 @@
 /* Font Roboto*/
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 /* Reset */
-
 * {
   box-sizing: border-box;
   user-select: none;
@@ -13,7 +11,6 @@
 }
 
 /* Variables */
-
 :root {
   --color-1: #333;
   --color-2: #f4f4f4;
@@ -26,7 +23,6 @@
 }
 
 /* Container & Main Styles */
-
 body {
   line-height: 1.4;
   background: var(--color-2);
@@ -66,7 +62,6 @@ section {
 }
 
 /* Button Classes */
-
 .btn {
   cursor: pointer;
   background: var(--color-1);
@@ -93,7 +88,6 @@ section {
 }
 
 /* Font Classes */
-
 .lead-small {
   font-size: 1.5rem;
 }
@@ -107,7 +101,6 @@ section {
 }
 
 /* Incorrect Display */
-
 .incorrect-display {
   border: solid 3px #ff1646;
   color: var(--color-1);
@@ -117,7 +110,6 @@ section {
 }
 
 /* Input Classes */
-
 input {
   max-width: 150px;
   padding: 1rem;
