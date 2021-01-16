@@ -1,20 +1,22 @@
-"use strict";
+'use strict';
 
 // Const Variables
 
-const mainBtn = document.getElementById("main-btn");
-const questionEl = document.getElementById("question");
-const answerEl = document.getElementById("answer");
-const wrongEl = document.getElementById("wrong");
-const correctEl = document.getElementById("correct");
-const saveBtn = document.getElementById("save-btn");
+const mainBtn = document.getElementById('main-btn');
+const questionEl = document.getElementById('question');
+const answerEl = document.getElementById('answer');
+const wrongEl = document.getElementById('wrong');
+const correctEl = document.getElementById('correct');
+const saveBtn = document.getElementById('save-btn');
+const incorrectDisplay = document.getElementById('incorrect-display');
 
 // Let Variables
 
 let answer, number1, number2, score;
 let wrong = 0;
 let correct = 0;
-let symbol = "+";
+let symbol = '+';
+let autoSave = 'off';
 
 // Init Functions
 
@@ -55,68 +57,71 @@ function getRandomInt(min, max) {
 // Level Functions Adding
 
 function addLvlOne() {
-  symbol = "+";
+  symbol = '+';
   return getRandomInt(0, 10);
 }
 
 function addLvlTwo() {
-  symbol = "+";
+  symbol = '+';
   return getRandomInt(5, 15);
 }
 
 function addLvlThree() {
-  symbol = "+";
+  symbol = '+';
   return getRandomInt(10, 30);
 }
 
 // Level Functions Subtraction
 
 function subLvlOne() {
-  symbol = "-";
+  symbol = '-';
   return getRandomInt(0, 10);
 }
 
 function subLvlTwo() {
-  symbol = "-";
+  symbol = '-';
   return getRandomInt(0, 20);
 }
 
 function subLvlThree() {
-  symbol = "-";
+  symbol = '-';
   return getRandomInt(10, 30);
 }
 
 // Level Functions Multiplication
 
 function mulLvlOne() {
-  symbol = "x";
+  symbol = 'x';
   return getRandomInt(0, 7);
 }
 
 function mulLvlTwo() {
-  symbol = "x";
+  symbol = 'x';
   return getRandomInt(4, 11);
 }
 
 function mulLvlThree() {
-  symbol = "x";
+  symbol = 'x';
   return getRandomInt(6, 15);
 }
 
 // Check Answer Function
 
 function checkAnswer() {
+  incorrectDisplay.classList.add('hidden');
   let numberValue = answerEl.value;
   if (numberValue) {
     numberValue = Number(answerEl.value);
     if (answer === numberValue) {
       correct++;
-      answerEl.style.border = "3px solid #19de7b";
+      answerEl.style.border = '3px solid #19de7b';
     } else {
       wrong++;
-      answerEl.style.border = "3px solid #ff1646";
+      answerEl.style.border = '3px solid #ff1646';
+      incorrectDisplay.classList.remove('hidden');
+      incorrectDisplay.textContent = `${number1} ${symbol} ${number2} = ${answer}`;
     }
-    answerEl.value = "";
+    answerEl.value = '';
     score = correct - wrong;
     problem();
   }
@@ -127,16 +132,16 @@ function checkAnswer() {
 function problem() {
   number1 = decide();
   number2 = decide();
-  if (symbol === "+") {
+  if (symbol === '+') {
     answer = number1 + number2;
-  } else if (symbol === "-") {
+  } else if (symbol === '-') {
     answer = number1 - number2;
     while (number1 < number2) {
       number1 = decide();
       number2 = decide();
       answer = number1 - number2;
     }
-  } else if (symbol === "x") {
+  } else if (symbol === 'x') {
     answer = number1 * number2;
   }
   questionEl.textContent = `${number1} ${symbol} ${number2} = `;
@@ -144,25 +149,31 @@ function problem() {
 
 // Event Listeners
 
-mainBtn.addEventListener("click", checkAnswer);
+mainBtn.addEventListener('click', checkAnswer);
 
-saveBtn.addEventListener("click", function () {
-  const savedScore = localStorage.setItem("score", `${score}`);
-  const savedCorrect = localStorage.setItem("correct", `${correct}`);
-  const savedWrong = localStorage.setItem("wrong", `${wrong}`);
+saveBtn.addEventListener('click', function (event) {
+  autoSave === 'off' ? (autoSave = 'on') : (autoSave = 'off');
 });
+
+// Save Function
+
+function save() {
+  const savedScore = localStorage.setItem('score', `${score}`);
+  const savedCorrect = localStorage.setItem('correct', `${correct}`);
+  const savedWrong = localStorage.setItem('wrong', `${wrong}`);
+}
 
 // Local Storage Function
 
 function populateUI() {
-  if (localStorage.getItem("score")) {
-    score = localStorage.getItem("score");
+  if (localStorage.getItem('score')) {
+    score = localStorage.getItem('score');
   }
-  if (localStorage.getItem("correct")) {
-    correct = localStorage.getItem("correct");
+  if (localStorage.getItem('correct')) {
+    correct = localStorage.getItem('correct');
   }
-  if (localStorage.getItem("wrong")) {
-    wrong = localStorage.getItem("wrong");
+  if (localStorage.getItem('wrong')) {
+    wrong = localStorage.getItem('wrong');
   }
 }
 
@@ -171,20 +182,26 @@ function populateUI() {
 const updateGame = setInterval(() => {
   wrongEl.textContent = `❌ ${wrong}`;
   correctEl.textContent = `✔️ ${correct}`;
+  if (autoSave === 'on') {
+    saveBtn.textContent = 'Save: On';
+    save();
+  } else {
+    saveBtn.textContent = 'Save: Off';
+  }
 }, 10);
 
 // Clear Local Storage Event Listener
 
-document.addEventListener("keypress", function (event) {
-  if (event.keyCode === 32) {
+document.addEventListener('keypress', function (event) {
+  if (event.code === 'Space') {
     clearGame();
   }
 });
 
 // Check Answer Event Listener
 
-document.addEventListener("keypress", function (event) {
-  if (event.keyCode === 13) {
+document.addEventListener('keypress', function (event) {
+  if (event.code === 'Enter') {
     event.preventDefault();
     checkAnswer();
   }
@@ -196,9 +213,11 @@ function clearGame() {
   wrong = 0;
   correct = 0;
   score = 0;
-  symbol = "+";
-  answerEl.style.border = "3px solid #333";
-  answerEl.value = "";
+  symbol = '+';
+  autoSave = 'off';
+  answerEl.style.border = '3px solid #333';
+  incorrectDisplay.classList.add('hidden');
+  answerEl.value = '';
   localStorage.clear();
   problem();
 }

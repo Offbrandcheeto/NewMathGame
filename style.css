@@ -1,6 +1,6 @@
 /* Font Roboto*/
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 /* Reset */
 
@@ -9,7 +9,7 @@
   user-select: none;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Variables */
@@ -18,6 +18,11 @@
   --color-1: #333;
   --color-2: #f4f4f4;
   --color-3: #fff;
+}
+
+/* Hidden Class */
+.hidden {
+  display: none;
 }
 
 /* Container & Main Styles */
@@ -99,6 +104,16 @@ section {
 
 .lead-2 {
   font-size: 4rem;
+}
+
+/* Incorrect Display */
+
+.incorrect-display {
+  border: solid 3px #ff1646;
+  color: var(--color-1);
+  background: var(--color-3);
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 /* Input Classes */
