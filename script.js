@@ -14,7 +14,7 @@ let answer, number1, number2, score;
 let wrong = 0;
 let correct = 0;
 let symbol = '+';
-let autoSave = 'off';
+let autoSave = 'on';
 
 // Init Functions
 populateUI();
