@@ -141,15 +141,15 @@ function problem() {
 // Event Listeners
 mainBtn.addEventListener('click', checkAnswer);
 
-saveBtn.addEventListener('click', function (event) {
+saveBtn.addEventListener('click', () => {
   autoSave === 'off' ? (autoSave = 'on') : (autoSave = 'off');
 });
 
 // Save Function
 function save() {
-  const savedScore = localStorage.setItem('score', `${score}`);
-  const savedCorrect = localStorage.setItem('correct', `${correct}`);
-  const savedWrong = localStorage.setItem('wrong', `${wrong}`);
+  const savedScore = localStorage.setItem('score', score);
+  const savedCorrect = localStorage.setItem('correct', correct);
+  const savedWrong = localStorage.setItem('wrong', wrong);
 }
 
 // Local Storage Function
@@ -178,14 +178,14 @@ const updateGame = setInterval(() => {
 }, 10);
 
 // Clear Local Storage Event Listener
-document.addEventListener('keypress', function (event) {
+document.addEventListener('keypress', event => {
   if (event.code === 'Space') {
     clearGame();
   }
 });
 
 // Check Answer Event Listener
-document.addEventListener('keypress', function (event) {
+document.addEventListener('keypress', event => {
   if (event.code === 'Enter') {
     event.preventDefault();
     checkAnswer();
