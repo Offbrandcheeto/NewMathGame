@@ -185,9 +185,9 @@ document.addEventListener('keypress', event => {
 });
 
 // Check Answer Event Listener
-document.addEventListener('keypress', event => {
-  if (event.code === 'Enter') {
-    event.preventDefault();
+document.addEventListener('keypress', e => {
+  if (e.code === 'Enter') {
+    e.preventDefault();
     checkAnswer();
   }
 });
