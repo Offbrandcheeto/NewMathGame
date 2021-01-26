@@ -124,6 +124,7 @@ function checkAnswer() {
     }
     answerEl.value = '';
     score = correct - wrong;
+    answerEl.focus();
     problem();
   }
 }
@@ -176,13 +177,13 @@ function populateUI() {
 
 // Update Game Variable
 const updateGame = setInterval(() => {
-  wrongEl.innerHTML = `${wrong} <i class="fas fa-times wrong"></i> `;
-  correctEl.innerHTML = `${correct} <i class="fas fa-check correct"></i> `;
+  wrongEl.innerHTML = `${wrong} <i class="fas fa-times lead wrong"></i> `;
+  correctEl.innerHTML = `${correct} <i class="fas fa-check lead correct"></i> `;
   if (autoSave === 'on') {
-    saveBtn.textContent = 'Save: On';
+    saveBtn.textContent = 'Auto Saving';
     save();
   } else {
-    saveBtn.textContent = 'Save: Off';
+    saveBtn.textContent = 'Not Saving';
   }
 }, 10);
 
