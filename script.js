@@ -19,6 +19,7 @@ let autoSave = 'on';
 // Init Functions
 populateUI();
 problem();
+answerEl.focus();
 
 // Decide Function
 function decide() {
@@ -107,11 +108,19 @@ function checkAnswer() {
     if (answer === numberValue) {
       correct++;
       answerEl.style.border = '3px solid #19de7b';
+      correctEl.classList.add('active');
+      setTimeout(() => {
+        correctEl.classList.remove('active');
+      }, 400);
     } else {
       wrong++;
       answerEl.style.border = '3px solid #ff1646';
       incorrectDisplay.classList.remove('hidden');
       incorrectDisplay.textContent = `${number1} ${symbol} ${number2} = ${answer}`;
+      wrongEl.classList.add('active');
+      setTimeout(() => {
+        wrongEl.classList.remove('active');
+      }, 400);
     }
     answerEl.value = '';
     score = correct - wrong;
@@ -167,8 +176,8 @@ function populateUI() {
 
 // Update Game Variable
 const updateGame = setInterval(() => {
-  wrongEl.textContent = `❌ ${wrong}`;
-  correctEl.textContent = `✔️ ${correct}`;
+  wrongEl.innerHTML = `${wrong} <i class="fas fa-times wrong"></i> `;
+  correctEl.innerHTML = `${correct} <i class="fas fa-check correct"></i> `;
   if (autoSave === 'on') {
     saveBtn.textContent = 'Save: On';
     save();
