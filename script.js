@@ -37,8 +37,10 @@ function decide() {
     return mulLvlOne();
   } else if (score >= 70 && score < 80) {
     return mulLvlTwo();
-  } else if (score >= 80) {
+  } else if (score >= 80 && score < 100) {
     return mulLvlThree();
+  } else if (score >= 100) {
+    return mulLvlFour();
   } else {
     return addLvlOne();
   }
@@ -97,6 +99,11 @@ function mulLvlTwo() {
 function mulLvlThree() {
   symbol = 'x';
   return getRandomInt(6, 15);
+}
+
+function mulLvlFour() {
+  symbol = 'x';
+  return getRandomInt(9, 20);
 }
 
 // Check Answer Function
