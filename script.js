@@ -103,7 +103,7 @@ function mulLvlThree() {
 
 function mulLvlFour() {
   symbol = 'x';
-  return getRandomInt(9, 20);
+  return getRandomInt(10, 20);
 }
 
 // Check Answer Function
