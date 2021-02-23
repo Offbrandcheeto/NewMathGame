@@ -28,19 +28,25 @@ function decide() {
   } else if (score >= 20 && score < 30) {
     return addLvlThree();
   } else if (score >= 30 && score < 40) {
-    return subLvlOne();
+    return addLvlFour();
   } else if (score >= 40 && score < 50) {
-    return subLvlTwo();
+    return subLvlOne();
   } else if (score >= 50 && score < 60) {
-    return subLvlThree();
+    return subLvlTwo();
   } else if (score >= 60 && score < 70) {
-    return mulLvlOne();
+    return subLvlThree();
   } else if (score >= 70 && score < 80) {
-    return mulLvlTwo();
+    return subLvlFour();
   } else if (score >= 80 && score < 100) {
+    return mulLvlOne();
+  } else if (score >= 100 && score < 110) {
+    return mulLvlTwo();
+  } else if (score >= 110 && score < 120) {
     return mulLvlThree();
-  } else if (score >= 100) {
+  } else if (score >= 120 && score < 130) {
     return mulLvlFour();
+  } else if (score >= 130) {
+    return mulLvlFive();
   } else {
     return addLvlOne();
   }
@@ -66,7 +72,12 @@ function addLvlTwo() {
 
 function addLvlThree() {
   symbol = '+';
-  return getRandomInt(10, 30);
+  return getRandomInt(10, 20);
+}
+
+function addLvlFour() {
+  symbol = '+';
+  return getRandomInt(15, 30);
 }
 
 // Level Functions Subtraction
@@ -77,10 +88,15 @@ function subLvlOne() {
 
 function subLvlTwo() {
   symbol = '-';
-  return getRandomInt(0, 20);
+  return getRandomInt(0, 15);
 }
 
 function subLvlThree() {
+  symbol = '-';
+  return getRandomInt(5, 20);
+}
+
+function subLvlFour() {
   symbol = '-';
   return getRandomInt(10, 30);
 }
@@ -93,17 +109,22 @@ function mulLvlOne() {
 
 function mulLvlTwo() {
   symbol = 'x';
-  return getRandomInt(4, 11);
+  return getRandomInt(4, 10);
 }
 
 function mulLvlThree() {
   symbol = 'x';
-  return getRandomInt(6, 15);
+  return getRandomInt(6, 12);
 }
 
 function mulLvlFour() {
   symbol = 'x';
-  return getRandomInt(10, 20);
+  return getRandomInt(10, 15);
+}
+
+function mulLvlFive() {
+  symbol = 'x';
+  return getRandomInt(12, 20);
 }
 
 // Check Answer Function
